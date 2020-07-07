@@ -12,13 +12,14 @@
     "@types/react-dom": "^16.9.8",
     "antd": "^4.3.5",
     "axios": "^0.19.2",
+    "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start && node src/mock/mockServer.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -37,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "mockjs": "^1.1.0"
   }
 }

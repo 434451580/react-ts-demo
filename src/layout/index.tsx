@@ -1,15 +1,22 @@
 import React from 'react'
-
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-
+import request from '../utils/request'
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
 
 export default class AppLayout extends React.Component {
 
+    componentDidMount() {
+        request('/api/test/mockTest').then(res=>{
+            console.log(res)
+        })
+    }
+
+
     render() {
+        console.log(process)
         return (
             <Layout>
                 <Header className="header">
