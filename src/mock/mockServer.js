@@ -1,20 +1,31 @@
-const express = require("express");
-const app = express(); //创建express 实例
-const router = express.Router();//使用 express.Router 类来创建可安装的模块化路由处理程序
+//引入express
+let express = require('express')
+// 导入路由配置
+let baseMockData = require('./base')
+//实例化express
+let app = express();
+// post请求体相关
+let bodyParser = require('body-parser')
+app.use(bodyParser.json())
 
-//基本路由：app.METHOD(PATH, HANDLER)
-app.get('/',function(req,res){
-	//req（请求）,res（响应）
-	req.send("Hello Word!")
+// 允许跨域
+app.all('*', function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+	// 此处根据前端请求携带的请求头进行配置 
+	res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+	// 例如： 我们公司的请求头需要携带Authorization和Client-Type，此处就应该按照以下进行配置
+	// res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Client-Type");
+	next();
 })
-//方法1：
-//router.use("/second",require('./mockApi'));
-//app.use("/api",router) 
 
-//方法2：
-app.use("/api",require("./base.js"));//装入mockApi路由器模块
+// mock test
+app.get('/api/test', function (req, res) {
+	res.json(baseMockData.test)
+})
 
-//应用程序会启动服务器，并在端口 3001 上侦听连接
-app.listen(3001,function () {
-  console.log('Example app listening on port 3001!');
+
+
+app.listen(3001, () => {
+	console.log('监听端口 3001')
 })
