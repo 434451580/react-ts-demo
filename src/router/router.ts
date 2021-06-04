@@ -1,7 +1,8 @@
 
 
 import Home from '../pages/home';
-import { routerItemType } from '../typings';
+import About from '../pages/about'
+import { routerItemType } from '../framework/typings';
 // import Login from '../pages/login';
 // import Register from '../pages/register';
 // import routerItemType from ''
@@ -13,6 +14,12 @@ const routeConfig: routerItemType[] = [
         component: Home,
         children: [],
     },
+    {
+        name: '关于',
+        path: '/about',
+        component: About,
+        children: [],
+    }
 ]
 
 export default routeConfig
